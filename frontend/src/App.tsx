@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Container, CssBaseline, ThemeProvider, createTheme } from '@mui/material';
+import { Container, CssBaseline, ThemeProvider, createTheme, Box } from '@mui/material';
 import { GoalForm } from './components/GoalForm';
 import { ContentDisplay } from './components/ContentDisplay';
 import { ReviewSchedule } from './components/ReviewSchedule';
@@ -105,8 +105,24 @@ function App() {
         }}
       >
         <GoalForm onSubmit={handleGoalSubmit} />
-        {content && <ContentDisplay content={content} />}
-        {schedule && <ReviewSchedule schedule={schedule} />}
+        {content && (
+          <Box sx={{ 
+            opacity: 1, 
+            transition: 'opacity 0.3s ease-in',
+            animation: 'fadeIn 0.5s ease-in'
+          }}>
+            <ContentDisplay content={content} />
+          </Box>
+        )}
+        {schedule && (
+          <Box sx={{ 
+            opacity: 1, 
+            transition: 'opacity 0.3s ease-in',
+            animation: 'fadeIn 0.5s ease-in'
+          }}>
+            <ReviewSchedule schedule={schedule} />
+          </Box>
+        )}
       </Container>
     </ThemeProvider>
   );
