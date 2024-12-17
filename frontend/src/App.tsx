@@ -3,6 +3,7 @@ import { Container, CssBaseline, ThemeProvider, createTheme, Box } from '@mui/ma
 import { GoalForm } from './components/GoalForm';
 import { ContentDisplay } from './components/ContentDisplay';
 import { ReviewSchedule } from './components/ReviewSchedule';
+import RealtimeChat from './components/RealtimeChat';
 import { generateContent, scheduleReview } from './services/api';
 import { Goal, ReviewSchedule as IReviewSchedule } from './types';
 
@@ -75,6 +76,7 @@ const theme = createTheme({
 function App() {
   const [content, setContent] = useState<string>('');
   const [schedule, setSchedule] = useState<IReviewSchedule | null>(null);
+  const [realtimeMessages, setRealtimeMessages] = useState<any[]>([]);
 
   const handleGoalSubmit = async (goal: Goal) => {
     try {
@@ -91,6 +93,10 @@ function App() {
     }
   };
 
+  const handleRealtimeMessage = (message: any) => {
+    setRealtimeMessages(prev => [...prev, message]);
+  };
+
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
@@ -104,25 +110,28 @@ function App() {
           gap: 3
         }}
       >
-        <GoalForm onSubmit={handleGoalSubmit} />
-        {content && (
-          <Box sx={{ 
-            opacity: 1, 
-            transition: 'opacity 0.3s ease-in',
-            animation: 'fadeIn 0.5s ease-in'
-          }}>
-            <ContentDisplay content={content} />
-          </Box>
-        )}
-        {schedule && (
-          <Box sx={{ 
-            opacity: 1, 
-            transition: 'opacity 0.3s ease-in',
-            animation: 'fadeIn 0.5s ease-in'
-          }}>
-            <ReviewSchedule schedule={schedule} />
-          </Box>
-        )}
+        <Box sx={{ my: 4 }}>
+          <GoalForm onSubmit={handleGoalSubmit} />
+          {content && (
+            <Box sx={{ 
+              opacity: 1, 
+              transition: 'opacity 0.3s ease-in',
+              animation: 'fadeIn 0.5s ease-in'
+            }}>
+              <ContentDisplay content={content} />
+            </Box>
+          )}
+          {schedule && (
+            <Box sx={{ 
+              opacity: 1, 
+              transition: 'opacity 0.3s ease-in',
+              animation: 'fadeIn 0.5s ease-in'
+            }}>
+              <ReviewSchedule schedule={schedule} />
+            </Box>
+          )}
+          <RealtimeChat onMessage={handleRealtimeMessage} />
+        </Box>
       </Container>
     </ThemeProvider>
   );
