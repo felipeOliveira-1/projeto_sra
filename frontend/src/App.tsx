@@ -8,9 +8,66 @@ import { Goal, ReviewSchedule as IReviewSchedule } from './types';
 
 const theme = createTheme({
   palette: {
-    mode: 'light',
+    mode: 'dark',
     primary: {
-      main: '#1976d2',
+      main: '#90caf9',
+      light: '#e3f2fd',
+      dark: '#42a5f5',
+    },
+    secondary: {
+      main: '#ce93d8',
+      light: '#f3e5f5',
+      dark: '#ab47bc',
+    },
+    background: {
+      default: '#121212',
+      paper: '#1e1e1e',
+    },
+    text: {
+      primary: '#ffffff',
+      secondary: 'rgba(255, 255, 255, 0.7)',
+    },
+  },
+  typography: {
+    fontFamily: '"Roboto", "Helvetica", "Arial", sans-serif',
+    h1: {
+      fontSize: '2.5rem',
+      fontWeight: 500,
+    },
+    h2: {
+      fontSize: '2rem',
+      fontWeight: 500,
+    },
+    body1: {
+      fontSize: '1rem',
+      lineHeight: 1.5,
+    },
+  },
+  components: {
+    MuiButton: {
+      styleOverrides: {
+        root: {
+          borderRadius: 8,
+          textTransform: 'none',
+          padding: '8px 24px',
+        },
+      },
+    },
+    MuiPaper: {
+      styleOverrides: {
+        root: {
+          borderRadius: 12,
+          padding: 24,
+        },
+      },
+    },
+    MuiCard: {
+      styleOverrides: {
+        root: {
+          borderRadius: 12,
+          boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
+        },
+      },
     },
   },
 });
@@ -37,7 +94,16 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <Container maxWidth="md" sx={{ py: 4 }}>
+      <Container 
+        maxWidth="md" 
+        sx={{ 
+          py: 4,
+          minHeight: '100vh',
+          display: 'flex',
+          flexDirection: 'column',
+          gap: 3
+        }}
+      >
         <GoalForm onSubmit={handleGoalSubmit} />
         {content && <ContentDisplay content={content} />}
         {schedule && <ReviewSchedule schedule={schedule} />}

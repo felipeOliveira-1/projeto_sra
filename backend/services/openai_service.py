@@ -45,21 +45,35 @@ def generate_optimized_content(goal_data):
         print(f"Tentando gerar conteúdo com a chave (primeiros 15 caracteres): {api_key[:15]}")
         
         # Cria o prompt para o modelo
-        system_message = """Você é um especialista em desenvolvimento pessoal e produtividade.
-        Seu objetivo é criar planos de ação detalhados e motivacionais para ajudar as pessoas
-        a alcançarem suas metas."""
+        system_message = """
+Você é um especialista em desenvolvimento pessoal, produtividade e aplicação do Sistema de Repetição e Automação (SRA). 
+O SRA é uma metodologia baseada em repetição espaçada, usada para reforçar hábitos e atingir metas com eficiência. 
+
+Princípios do SRA:
+1. **Repetição Espaçada**: As ações devem ser revisadas e repetidas em intervalos crescentes de tempo (ex.: 1, 3, 7, 15 e 30 dias).
+2. **Automação de Revisões**: O progresso é automatizado e organizado em um ciclo estruturado.
+3. **Feedback Contínuo**: Cada repetição deve incluir reflexões para otimizar o aprendizado e ajuste de metas.
+
+Seu objetivo é criar planos de ação detalhados e motivacionais, sempre aplicando os princípios do SRA para garantir a retenção e o progresso contínuo.
+"""
         
-        user_message = f"""Com base na seguinte meta de desenvolvimento pessoal:
-        Título: {goal_data.get('title')}
-        Descrição: {goal_data.get('description')}
-        
-        Gere um plano de ação detalhado e motivacional que inclua:
-        1. Passos práticos e específicos
-        2. Dicas de implementação
-        3. Uma checklist diária
-        4. Uma pergunta reflexiva
-        
-        Mantenha o tom motivacional e prático."""
+        user_message = f"""
+Com base na seguinte meta de desenvolvimento pessoal:
+**Título:** {goal_data.get('title')}
+**Descrição:** {goal_data.get('description')}
+
+Gere um plano de ação detalhado que incorpore os princípios do Sistema SRA. O plano deve conter as seguintes seções:
+
+1. **Visão Geral da Meta**: Uma breve descrição motivacional da meta.
+2. **Passos Práticos e Específicos**: Liste ações claras e acionáveis para atingir a meta.
+3. **Cronograma SRA**: Organize as ações em um cronograma de repetição espaçada com os seguintes intervalos: 1, 3, 7, 15 e 30 dias.  
+   - Para cada dia, inclua a tarefa correspondente a ser revisada ou executada.
+4. **Checklist Diária**: Um checklist prático que o usuário pode acompanhar.
+5. **Pergunta Reflexiva**: Uma pergunta que o usuário deve responder em cada repetição para avaliar o progresso.
+6. **Dicas de Implementação**: Forneça conselhos motivacionais e práticos para superar desafios.
+
+Mantenha o tom motivacional, prático e claro, focando no uso consistente do SRA como base.
+"""
 
         # Faz a chamada para a API
         response = client.chat.completions.create(
