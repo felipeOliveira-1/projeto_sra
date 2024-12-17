@@ -3,9 +3,10 @@ import { Box, Button, Typography, CircularProgress } from '@mui/material';
 
 interface RealtimeChatProps {
   onMessage: (message: any) => void;
+  generatedContent?: string;
 }
 
-const RealtimeChat: React.FC<RealtimeChatProps> = ({ onMessage }) => {
+const RealtimeChat: React.FC<RealtimeChatProps> = ({ onMessage, generatedContent = '' }) => {
   const [isConnected, setIsConnected] = useState(false);
   const [isConnecting, setIsConnecting] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -56,7 +57,10 @@ const RealtimeChat: React.FC<RealtimeChatProps> = ({ onMessage }) => {
         headers: {
           'Content-Type': 'application/json',
           'Accept': 'application/json'
-        }
+        },
+        body: JSON.stringify({
+          generated_content: generatedContent
+        })
       });
       
       if (!tokenResponse.ok) {

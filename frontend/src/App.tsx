@@ -130,7 +130,12 @@ function App() {
               <ReviewSchedule schedule={schedule} />
             </Box>
           )}
-          <RealtimeChat onMessage={handleRealtimeMessage} />
+          {content && (
+            <RealtimeChat 
+              onMessage={handleRealtimeMessage} 
+              generatedContent={content}
+            />
+          )}
         </Box>
       </Container>
     </ThemeProvider>

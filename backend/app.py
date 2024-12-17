@@ -35,16 +35,11 @@ def create_realtime_session():
             app.logger.error("OpenAI API key not configured")
             return jsonify({"error": "OpenAI API key not configured"}), 500
 
+        # Get the generated content from the request
+        data = request.json
+        generated_content = data.get('generated_content', '')
+
         app.logger.info("Making request to OpenAI API")
-        
-        # Load SRA content
-        sra_content = ""
-        try:
-            with open('docs/Sistema Reticular Ativador (SRA).md', 'r', encoding='utf-8') as file:
-                sra_content = file.read()
-        except Exception as e:
-            app.logger.error(f"Error loading SRA content: {str(e)}")
-            
         response = requests.post(
             "https://api.openai.com/v1/realtime/sessions",
             headers={
@@ -57,12 +52,19 @@ def create_realtime_session():
                 "context": {
                     "role": "system",
                     "content": f"""Você é um assistente especializado no Sistema Reticular Ativador (SRA).
-                    Use o seguinte conteúdo como base para suas respostas:
+                    Você tem acesso ao seguinte plano de ação e conteúdo gerado:
                     
-                    {sra_content}
+                    {generated_content}
                     
-                    Responda às perguntas de forma natural e conversacional, usando exemplos práticos
-                    e mantendo o foco nas aplicações práticas do SRA para desenvolvimento pessoal e educação."""
+                    Use este conteúdo para:
+                    1. Explicar detalhadamente cada parte do plano
+                    2. Responder dúvidas sobre as ações práticas
+                    3. Fornecer exemplos adicionais quando solicitado
+                    4. Ajudar com a visualização e afirmações
+                    5. Auxiliar no cronograma de revisão
+                    
+                    Responda às perguntas de forma natural e conversacional, sempre se referindo
+                    ao plano específico gerado para o usuário."""
                 }
             }
         )
