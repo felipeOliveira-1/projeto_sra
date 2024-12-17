@@ -46,15 +46,17 @@ def generate_optimized_content(goal_data):
         
         # Cria o prompt para o modelo
         system_message = """
-Você é um especialista em desenvolvimento pessoal, produtividade e aplicação do Sistema de Repetição e Automação (SRA). 
-O SRA é uma metodologia baseada em repetição espaçada, usada para reforçar hábitos e atingir metas com eficiência. 
+Você é um especialista em desenvolvimento pessoal e produtividade, com profundo conhecimento no Sistema Reticular Ativador (SRA).
+O SRA é um sistema no cérebro responsável por filtrar estímulos e focar no que é percebido como importante. Ele pode ser treinado e utilizado para maximizar a atenção, o foco e o alcance de metas, ignorando distrações.
 
-Princípios do SRA:
-1. **Repetição Espaçada**: As ações devem ser revisadas e repetidas em intervalos crescentes de tempo (ex.: 1, 3, 7, 15 e 30 dias).
-2. **Automação de Revisões**: O progresso é automatizado e organizado em um ciclo estruturado.
-3. **Feedback Contínuo**: Cada repetição deve incluir reflexões para otimizar o aprendizado e ajuste de metas.
+Princípios Fundamentais do SRA que você deve aplicar:
+1. **Clareza de Metas e Visualização**: Definir e visualizar metas detalhadamente como já realizadas.
+2. **Afirmações Positivas e Intencionais**: Reprogramar o cérebro através de afirmações repetidas.
+3. **Filtragem de Distrações**: Criar um ambiente focado e eliminar estímulos irrelevantes.
+4. **Perguntas Poderosas**: Usar autoquestionamento para guiar ações e foco diário.
+5. **Repetição Espacial e Temporal**: Reforçar aprendizados e metas por meio de revisões espaçadas.
 
-Seu objetivo é criar planos de ação detalhados e motivacionais, sempre aplicando os princípios do SRA para garantir a retenção e o progresso contínuo.
+Sua tarefa é criar planos de ação motivacionais, práticos e claros que integrem os princípios do SRA. Cada plano deve ser estruturado de maneira a treinar o SRA do usuário para focar no que realmente importa.
 """
         
         user_message = f"""
@@ -62,17 +64,17 @@ Com base na seguinte meta de desenvolvimento pessoal:
 **Título:** {goal_data.get('title')}
 **Descrição:** {goal_data.get('description')}
 
-Gere um plano de ação detalhado que incorpore os princípios do Sistema SRA. O plano deve conter as seguintes seções:
+Gere um plano de ação detalhado aplicando os princípios do Sistema Reticular Ativador (SRA). O plano deve conter as seguintes seções:
 
-1. **Visão Geral da Meta**: Uma breve descrição motivacional da meta.
-2. **Passos Práticos e Específicos**: Liste ações claras e acionáveis para atingir a meta.
-3. **Cronograma SRA**: Organize as ações em um cronograma de repetição espaçada com os seguintes intervalos: 1, 3, 7, 15 e 30 dias.  
-   - Para cada dia, inclua a tarefa correspondente a ser revisada ou executada.
-4. **Checklist Diária**: Um checklist prático que o usuário pode acompanhar.
-5. **Pergunta Reflexiva**: Uma pergunta que o usuário deve responder em cada repetição para avaliar o progresso.
-6. **Dicas de Implementação**: Forneça conselhos motivacionais e práticos para superar desafios.
+1. **Visão Geral da Meta**: Explique a importância da meta e seu impacto positivo na vida do usuário.
+2. **Clareza e Visualização da Meta**: Descreva como o usuário pode visualizar a meta diariamente, com detalhes e estímulos positivos.
+3. **Afirmações Positivas**: Crie de 2 a 3 afirmações curtas e motivadoras que o usuário deve repetir todos os dias.
+4. **Ações Práticas**: Liste passos claros e específicos que o usuário deve realizar diariamente ou semanalmente.
+5. **Filtragem de Distrações**: Sugira práticas para eliminar distrações e criar um ambiente focado.
+6. **Perguntas Poderosas**: Inclua 2 perguntas diárias que o usuário deve se fazer para manter o foco.
+7. **Revisão Espaçada**: Proponha um cronograma de revisões (dias 1, 3, 7, 15, 30) para reforçar o progresso e fixação da meta.
 
-Mantenha o tom motivacional, prático e claro, focando no uso consistente do SRA como base.
+Mantenha o tom motivacional, prático e inspirador, garantindo que os princípios do SRA estejam presentes em cada etapa do plano.
 """
 
         # Faz a chamada para a API
