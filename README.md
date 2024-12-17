@@ -1,11 +1,35 @@
 # Projeto SRA (Sistema de Repetição e Automação)
 
+## Sobre o Projeto
+O SRA é um sistema inovador desenvolvido para automatizar tarefas repetitivas e otimizar fluxos de trabalho. Ele combina uma interface moderna e intuitiva com um backend robusto para oferecer:
+
+- **Automação de Tarefas**: Crie e gerencie sequências de ações automatizadas
+- **Agendamento**: Programe execuções de tarefas em horários específicos
+- **Monitoramento**: Acompanhe o status e resultados das automações em tempo real
+- **Relatórios**: Gere relatórios detalhados sobre as execuções e desempenho
+
+## Tecnologias Utilizadas
+
+### Backend
+- **Python 3.8+**: Linguagem principal do backend
+- **Flask**: Framework web para API REST
+- **SQLAlchemy**: ORM para gerenciamento do banco de dados
+- **Celery**: Processamento assíncrono de tarefas
+- **Redis**: Cache e broker de mensagens
+
+### Frontend
+- **React 18**: Biblioteca JavaScript para construção da interface
+- **TypeScript**: Superset JavaScript para maior segurança e produtividade
+- **Material-UI**: Framework de componentes para interface moderna
+- **Redux Toolkit**: Gerenciamento de estado da aplicação
+- **Axios**: Cliente HTTP para comunicação com o backend
+
 ## Estrutura do Projeto
 ```
 projeto_sra/
 ├── backend/           # API Flask e lógica de negócios
-├── frontend/          # Aplicação React
-└── docs/             # Documentação do projeto
+├── frontend/         # Aplicação React
+└── docs/            # Documentação do projeto
 ```
 
 ## Configuração do Ambiente
@@ -56,3 +80,15 @@ npm install
 ```bash
 npm start
 ```
+
+## Requisitos do Sistema
+- Python 3.8 ou superior
+- Node.js 16.x ou superior
+- Redis Server
+- PostgreSQL 13+
+
+## Contribuição
+Contribuições são bem-vindas! Por favor, leia nosso guia de contribuição antes de submeter pull requests.
+
+## Licença
+Este projeto está licenciado sob a MIT License - veja o arquivo LICENSE para detalhes.
